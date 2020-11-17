@@ -1,0 +1,16 @@
+#!/bin/bash
+
+mkdir -p /opt/cprocsp/cp-openssl-1.1.0/.openssl/lib
+
+ln -s /opt/cprocsp/cp-openssl-1.1.0/lib/amd64/libcrypto.a /opt/cprocsp/cp-openssl-1.1.0/.openssl/lib/libcrypto.a
+ln -s /opt/cprocsp/cp-openssl-1.1.0/lib/amd64/libssl.a /opt/cprocsp/cp-openssl-1.1.0/.openssl/lib/libssl.a
+
+ln -s  /opt/cprocsp/cp-openssl-1.1.0/include/openssl /usr/include/openssl
+ln -s  /opt/cprocsp/cp-openssl-1.1.0/include/openssl /opt/cprocsp/cp-openssl-1.1.0/.openssl/include/openssl
+
+touch /opt/cprocsp/cp-openssl-1.1.0/Makefile
+echo 'target: ;' >> /opt/cprocsp/cp-openssl-1.1.0/Makefile
+echo 'install_sw: ;' >> /opt/cprocsp/cp-openssl-1.1.0/Makefile
+echo 'clean: ;' >> /opt/cprocsp/cp-openssl-1.1.0/Makefile
+
+ls /opt/cprocsp/cp-openssl-1.1.0/.openssl/lib/

@@ -1,0 +1,13 @@
+openssl_conf = openssl_def
+
+[openssl_def]
+engines = engine_section
+
+[engine_section]
+gostengy = gost_section
+
+[gost_section]
+engine_id = gostengy
+dynamic_path = /opt/cprocsp/cp-openssl-1.1.0/lib/amd64/engines/libgostengy.so
+
+default_algorithms = CIPHERS, DIGESTS, PKEY, PKEY_CRYPTO, PKEY_ASN1

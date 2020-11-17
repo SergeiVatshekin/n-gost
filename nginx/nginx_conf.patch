@@ -1,0 +1,41 @@
+diff --git a/auto/lib/openssl/conf b/auto/lib/openssl/conf
+--- a/auto/lib/openssl/conf
++++ b/auto/lib/openssl/conf
+@@ -62,7 +62,23 @@ else
+         ngx_feature_path=
+         ngx_feature_libs="-lssl -lcrypto $NGX_LIBDL $NGX_LIBPTHREAD"
+         ngx_feature_test="SSL_CTX_set_options(NULL, 0)"
+-        . auto/feature
++        ngx_found="no"
++
++        if [ $ngx_found = no ]; then
++
++            # CryptoPro port
++
++            ngx_feature="OpenSSL library in /opt/cprocsp/cp-openssl-1.1.0/"
++            ngx_feature_path="/opt/cprocsp/cp-openssl-1.1.0/include"
++
++            if [ $NGX_RPATH = YES ]; then
++                ngx_feature_libs="-R/opt/cprocsp/cp-openssl-1.1.0/lib/amd64 -L/opt/cprocsp/cp-openssl-1.1.0/lib/amd64 -lssl -lcrypto $NGX_LIBDL"
++            else
++                ngx_feature_libs="-L/opt/cprocsp/cp-openssl-1.1.0/lib/amd64 -lssl -lcrypto $NGX_LIBDL"
++            fi
++
++            . auto/feature
++        fi
+ 
+         if [ $ngx_found = no ]; then
+ 
+diff --git a/src/event/ngx_event_openssl.c b/src/event/ngx_event_openssl.c
+--- a/src/event/ngx_event_openssl.c
++++ b/src/event/ngx_event_openssl.c
+@@ -11,7 +11,7 @@
+ 
+ 
+ #define NGX_SSL_PASSWORD_BUFFER_SIZE  4096
+-
++#undef SSL_READ_EARLY_DATA_SUCCESS
+ 
+ typedef struct {
+     ngx_uint_t  engine;   /* unsigned  engine:1; */
+
