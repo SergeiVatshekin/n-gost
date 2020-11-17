@@ -1,5 +1,7 @@
 FROM ubuntu:18.04
 
+USER root
+
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 ARG DEBIAN_FRONTEND=noninteractive
