@@ -5,7 +5,7 @@ USER root
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get -y update && apt-get -y install dialog apt-utils && apt-get -y install openssl && apt-get -y install libssl-dev && apt-get -y install libpcre3 libpcre3-dev && apt-get -y install zlib1g zlib1g-dev && apt-get -y install git && apt-get -y install gcc && apt-get -y install make
+RUN apt-get -y update && apt-get -y install sudo && apt-get -y install dialog apt-utils && apt-get -y install openssl && apt-get -y install libssl-dev && apt-get -y install libpcre3 libpcre3-dev && apt-get -y install zlib1g zlib1g-dev && apt-get -y install git && apt-get -y install gcc && apt-get -y install make
 
 RUN mkdir /cprocsp-install
 COPY csp/linux-amd64.tgz /cprocsp-install
