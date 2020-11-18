@@ -1,6 +1,6 @@
 #!/bin/bash
 
-su -
+sudo -i
 
 cd /cprocsp-install/linux-amd64_deb && dpkg -i ./lsb-cprocsp-kc2-*
 
