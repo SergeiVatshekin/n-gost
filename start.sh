@@ -1,5 +1,7 @@
 #!/bin/bash
 
+su -
+
 cd /cprocsp-install/linux-amd64_deb && dpkg -i ./lsb-cprocsp-kc2-*
 
 /opt/cprocsp/bin/amd64/certmgr -inst -store uMy -cont '\\.\HDIMAGE\localhost.test.gosuslugi.ru' -provtype 81 -provname "Crypto-Pro GOST R 34.10-2012 KC2 Strong CSP"
